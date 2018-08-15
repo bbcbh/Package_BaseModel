@@ -6,8 +6,8 @@ import java.util.Properties;
 import util.PersonClassifier;
 
 /**
- * An interface describing some common properties and method for simulation.
- * @version 20180528
+ * An abstract class describing some common properties and method for simulation.
+ * @version 20180815
  * @author Ben Hui
  *
  *History: 
@@ -15,6 +15,8 @@ import util.PersonClassifier;
  *20180528:
  *  - Change definition of PROP_POP_EXPORT_AT to PROP_POP_EXPORT_AT. 
  *  - Remove the calling of PROP_POP_IMPORT. Use PROP_POP_IMPORT_PATH instead.
+ * 20180815:
+ *   - Add support for pop selection
  </pre>
  * 
  */
@@ -32,14 +34,16 @@ public interface SimulationInterface {
         "PROP_BASESEED", "PROP_NUM_SNAP", "PROP_SNAP_FREQ",
         "PROP_BURNIN",           
         "PROP_POP_EXPORT_AT", "PROP_POP_IMPORT_PATH", 
-        "PROP_INFECTION_INTRO"
+        "PROP_INFECTION_INTRO", "PROP_POP_SELECT_CSV"
     };
     public static final Class[] PROP_CLASS = {
         String.class, Integer.class, Integer.class,
         Long.class, Integer.class, Integer.class,
         Integer.class,              
         int[].class, String.class, 
-        float[][].class // PROP_INFECTION_INTRO Format: float[infId][global_time, prevalence or number of infected,...]
+        float[][].class, // PROP_INFECTION_INTRO Format: float[infId][global_time, prevalence or number of infected,...]
+        String.class,
+            
     };
     
     public static final int PROP_POP_TYPE = 0;
@@ -52,6 +56,7 @@ public interface SimulationInterface {
     public static final int PROP_POP_EXPORT_AT = PROP_BURNIN + 1;
     public static final int PROP_POP_IMPORT_PATH = PROP_POP_EXPORT_AT+1;
     public static final int PROP_INFECTION_INTRO = PROP_POP_IMPORT_PATH + 1; 
+    public static final int PROP_POP_SELECT_CSV = PROP_INFECTION_INTRO + 1; 
     
     // Export / import options
     public static final String POP_FILE_PREFIX = "pop_";    
