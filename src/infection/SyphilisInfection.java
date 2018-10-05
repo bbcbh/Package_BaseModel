@@ -203,6 +203,9 @@ public class SyphilisInfection extends infection.AbstractInfection implements in
                 res = Math.round(getRandomDistValue(DIST_INDEX_DURATION_LATENT));
                 setInfection(p, STATUS_LATENT, res);
                 break;
+            case STATUS_IMMUN:
+                setInfection(p, AbstractIndividualInterface.INFECT_S, Double.POSITIVE_INFINITY);
+                break;
 
         }
 
