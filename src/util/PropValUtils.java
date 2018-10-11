@@ -6,7 +6,14 @@ import java.util.Arrays;
  * A utility class contains methods to covert Object to String format used in properties files, and vice-versa.
  *
  * @author Ben Hui
- * @version 20180531
+ * @version 20181011
+ * 
+ * <pre>
+ * History
+ * 20181011: Add support for parsing of Double
+ * 
+ * </pre>
+ *
  */
 public class PropValUtils {
 
@@ -45,6 +52,8 @@ public class PropValUtils {
                 res = Boolean.valueOf(ent);
             } else if (Float.class.equals(cls)) {
                 res = Float.valueOf(ent);
+            } else if(Double.class.equals(cls)){
+                res = Double.valueOf(ent);
             } else if (cls.isArray()) {
                 res = parsePrimitiveArray(ent, cls);
             } else {
