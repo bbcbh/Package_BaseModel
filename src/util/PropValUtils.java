@@ -55,7 +55,7 @@ public class PropValUtils {
             } else if(Double.class.equals(cls)){
                 res = Double.valueOf(ent);
             } else if (cls.isArray()) {
-                res = parsePrimitiveArray(ent, cls);
+                res = parsePrimitiveArray(ent, cls);            
             } else {
                 System.err.print("PropValUtils.propToObject: Parsing of '" + ent + "' to class " + cls.getName() + " not yet supported.");
             }
