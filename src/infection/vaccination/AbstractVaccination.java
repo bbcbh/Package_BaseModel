@@ -2,6 +2,7 @@ package infection.vaccination;
 
 import java.util.Arrays;
 import java.util.HashMap;
+
 import person.AbstractIndividualInterface;
 
 /**
@@ -14,12 +15,31 @@ public abstract class AbstractVaccination {
 
     // Key: person id, value: age of vaccination
     protected HashMap<Integer, int[]> vaccinationRecord = new HashMap<>();
-    
+
     protected double[] parameters;
+
+    protected int[] validTime;
 
     public AbstractVaccination(double[] parameters) {
         this.parameters = parameters;
-    }        
+        this.validTime = null;
+
+    }
+
+    public AbstractVaccination(double[] parameters, int[] validTime) {
+        this.validTime = validTime;
+        this.parameters = parameters;
+    }
+
+    public int[] getValidTime() {
+        return validTime;
+    }
+
+    public boolean vaccinationApplicableAt(int time) {
+        return (validTime == null)
+                || (validTime[0] >= validTime[1])
+                || (time >= validTime[0] && time < validTime[1]);
+    }
 
     /**
      * Add vaccinated person to the vaccination record.
@@ -35,8 +55,8 @@ public abstract class AbstractVaccination {
             rec = Arrays.copyOf(rec, rec.length + 1);
         }
 
-        rec[rec.length - 1] = (int) person.getAge();               
-        return vaccinationRecord.put(person.getId(),rec);
+        rec[rec.length - 1] = (int) person.getAge();
+        return vaccinationRecord.put(person.getId(), rec);
     }
 
     public HashMap<Integer, int[]> getVaccinationRecord() {
@@ -63,7 +83,5 @@ public abstract class AbstractVaccination {
     public void setParameters(double[] parameters) {
         this.parameters = parameters;
     }
-    
-    
 
 }
