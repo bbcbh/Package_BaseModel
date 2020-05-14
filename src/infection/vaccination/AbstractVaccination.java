@@ -48,15 +48,19 @@ public abstract class AbstractVaccination {
      * @return vaccination history for the added person.
      */
     public int[] vaccinatePerson(AbstractIndividualInterface person) {
-        int[] rec = getVaccinationRecord(person.getId());
-        if (rec == null) {
-            rec = new int[1];
-        } else {
-            rec = Arrays.copyOf(rec, rec.length + 1);
-        }
+        if (person != null) {
+            int[] rec = getVaccinationRecord(person.getId());
+            if (rec == null) {
+                rec = new int[1];
+            } else {
+                rec = Arrays.copyOf(rec, rec.length + 1);
+            }
 
-        rec[rec.length - 1] = (int) person.getAge();
-        return vaccinationRecord.put(person.getId(), rec);
+            rec[rec.length - 1] = (int) person.getAge();
+            return vaccinationRecord.put(person.getId(), rec);
+        }else{
+            return null;
+        }
     }
 
     public HashMap<Integer, int[]> getVaccinationRecord() {
