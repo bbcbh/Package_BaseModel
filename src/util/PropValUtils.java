@@ -245,6 +245,7 @@ public class PropValUtils {
         //Write XML to file
         FileOutputStream outStream = new FileOutputStream(tarProp);
         transformer.transform(new DOMSource(src_doc), new StreamResult(outStream));
+        outStream.close();
     }
 
     public static void genPropFile(File tarDir, File scrDir, String PROP_FILE_NAME,
