@@ -16,6 +16,26 @@ import java.util.zip.ZipOutputStream;
  */
 public class FileZipper {
 
+    public static byte[] unzipFileToByteArray(File importFilePath)
+            throws IOException, FileNotFoundException {
+        java.util.zip.ZipInputStream zis
+                = new java.util.zip.ZipInputStream(
+                        new BufferedInputStream(
+                                new FileInputStream(importFilePath)));
+        java.io.ByteArrayOutputStream byte_dest;
+        int count;
+        final int BUFFER = 2048;
+        byte[] buf = new byte[BUFFER];
+        byte_dest = new java.io.ByteArrayOutputStream(BUFFER);
+        while (zis.getNextEntry() != null) {
+            while ((count = zis.read(buf, 0, BUFFER)) != -1) {
+                byte_dest.write(buf, 0, count);
+            }
+        }
+        byte_dest.close();
+        return byte_dest.toByteArray();
+    }
+
     public static File unzipFile(File zipFile, File baseDir)
             throws FileNotFoundException, IOException {
         FileOutputStream fos;
@@ -66,9 +86,8 @@ public class FileZipper {
                         });
             }
         } else {
-            
-            // Original method
 
+            // Original method
             final int BUFFER = 2048;
             byte[] data = new byte[BUFFER];
             ZipOutputStream zout;
