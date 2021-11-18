@@ -14,7 +14,12 @@ import random.RandomGenerator;
  */
 public class GeneralSEIRSInfection extends AbstractInfection implements TreatableInfectionInterface {
 
-    public static final String[] INF_STATUS = {"Exposed", "Asymptomatic", "Symptomatic", "Immune"};
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 9143931227762965254L;
+
+	public static final String[] INF_STATUS = {"Exposed", "Asymptomatic", "Symptomatic", "Immune"};
 
     public static final int PARAM_INDEX_TRAN_FEMALE_MALE = 0;
     public static final int PARAM_INDEX_TRAN_MALE_FEMALE = PARAM_INDEX_TRAN_FEMALE_MALE + 1;

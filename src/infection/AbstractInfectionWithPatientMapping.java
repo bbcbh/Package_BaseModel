@@ -11,7 +11,11 @@ import random.RandomGenerator;
  */
 public abstract class AbstractInfectionWithPatientMapping extends AbstractInfection implements java.io.Serializable{
     
-    // A mapping of patient id and infection specific parameter
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 843019464793283504L;
+	// A mapping of patient id and infection specific parameter
     protected final HashMap<Integer, double[]> currentlyInfected; 
     
     public AbstractInfectionWithPatientMapping(RandomGenerator RNG) {

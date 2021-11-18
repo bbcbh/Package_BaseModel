@@ -4,7 +4,12 @@ import org.jgrapht.EdgeFactory;
 
 public class RelationshipEdgeFactory implements EdgeFactory<Integer, SingleRelationship>, java.io.Serializable {
 
-    public RelationshipEdgeFactory(){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3005889714620145608L;
+
+	public RelationshipEdgeFactory(){
         super();
     }
 

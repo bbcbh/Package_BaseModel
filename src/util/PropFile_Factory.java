@@ -92,8 +92,8 @@ public class PropFile_Factory {
                     NodeList node_set = elem_set.getChildNodes();
 
                     String template_dir_pattern_str = null;
-                    HashMap<Integer, String> dir_replacement_text = new HashMap();
-                    HashMap<String, String> entry_replacement_text = new HashMap();
+                    HashMap<Integer, String> dir_replacement_text = new HashMap<Integer, String>();
+                    HashMap<String, String> entry_replacement_text = new HashMap<String, String>();
 
                     for (int sId = 0; sId < node_set.getLength(); sId++) {
                         if (node_set.item(sId) instanceof Element) {
@@ -147,7 +147,7 @@ public class PropFile_Factory {
                             NodeList nList_entry = xml_src.getElementsByTagName("entry");
 
                             // Replace element 
-                            ArrayList<Element> replaceElement = new ArrayList();
+                            ArrayList<Element> replaceElement = new ArrayList<>();
 
                             for (String aK : entry_replacement_text.keySet()) {
                                 boolean addNewElem = true;

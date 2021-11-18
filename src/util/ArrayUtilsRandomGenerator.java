@@ -78,7 +78,8 @@ public class ArrayUtilsRandomGenerator {
      * @param RNG Random number generator
      * @return An array of picked entries
      */
-    public static <T> T[] randomSelect(T[] ent, int numToPick, RandomGenerator RNG) {
+    @SuppressWarnings("unchecked")
+	public static <T> T[] randomSelect(T[] ent, int numToPick, RandomGenerator RNG) {
 
         Class<? extends T[]> entClass = (Class<? extends T[]>) ent.getClass();
         T[] res = (T[]) java.lang.reflect.Array.newInstance(entClass.getComponentType(), numToPick);

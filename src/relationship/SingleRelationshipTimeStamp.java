@@ -7,7 +7,11 @@ package relationship;
  */
 public class SingleRelationshipTimeStamp extends SingleRelationship {
 
-    int relStartTime;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8441896876051714971L;
+	int relStartTime;
 
     public SingleRelationshipTimeStamp(Integer[] links) {
         super(links);

@@ -27,6 +27,10 @@ import random.RandomGenerator;
 public abstract class AbstractInfection implements java.io.Serializable {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5165192496541146299L;
+	/**
      * The index of infection modelled.
      */
     private int infectionIndex;
@@ -85,7 +89,7 @@ public abstract class AbstractInfection implements java.io.Serializable {
      * @param index the index of distributions
      * @return the Class of distribution
      */
-    public Class getDistributionClass(int index) {
+    public Class<?> getDistributionClass(int index) {
         return distributions[index].getClass();
     }
 
@@ -232,12 +236,12 @@ public abstract class AbstractInfection implements java.io.Serializable {
                  
                 // Generate new distribution
                 boolean newDist = false;
-                java.lang.reflect.Constructor[] constructors = distributions[distId].getClass().getConstructors();
+                java.lang.reflect.Constructor<?>[] constructors = distributions[distId].getClass().getConstructors();
                 double[] state = generateDistParam(distStates[distId], distributions[distId]);
                 
-                newDist:
-                for (Constructor constructor : constructors) {
-                    Class[] paramClass = constructor.getParameterTypes();                                                            
+                //newDist:
+                for (Constructor<?> constructor : constructors) {
+                    Class<?>[] paramClass = constructor.getParameterTypes();                                                            
                     if (paramClass.length == state.length + 1 && 
                             paramClass[0].isInstance(getRNG())){                                                               
                         // +1 for RNG

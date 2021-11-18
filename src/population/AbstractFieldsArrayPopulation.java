@@ -21,7 +21,11 @@ import util.PersonClassifier;
  */
 public abstract class AbstractFieldsArrayPopulation extends AbstractPopulation {
 
-    public static final int ONE_YEAR_INT = 360;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2568864744773399023L;
+	public static final int ONE_YEAR_INT = 360;
     public static final int FIELDS_SEED = 0;
     public static final int FIELDS_RNG = FIELDS_SEED + 1;
     public static final int FELIDS_POP = FIELDS_RNG + 1;
@@ -207,7 +211,7 @@ public abstract class AbstractFieldsArrayPopulation extends AbstractPopulation {
         fields[FIELDS_NEXT_ID] = 0;
     }
 
-    public Class getFieldClass(int fieldNum) {
+    public Class<?> getFieldClass(int fieldNum) {
         if (fieldNum < getFields().length) {
             return getFields()[fieldNum] != null ? getFields()[fieldNum].getClass() : null;
         } else {
@@ -436,7 +440,7 @@ public abstract class AbstractFieldsArrayPopulation extends AbstractPopulation {
         return infCount;
     }
 
-    public static String objectToPropStr(Object ent, Class cls) {
+    public static String objectToPropStr(Object ent, Class<?> cls) {
         String res = "";
         if (ent != null) {
             if (boolean[].class.equals(ent)) {
@@ -456,7 +460,7 @@ public abstract class AbstractFieldsArrayPopulation extends AbstractPopulation {
         return res;
     }
 
-    public static Object propStrToObject(String ent, Class cls) {
+    public static Object propStrToObject(String ent, Class<?> cls) {
         Object res = null;
         if (ent != null && !ent.isEmpty() && !"null".equalsIgnoreCase(ent)) {
             if (String.class.equals(cls)) {
@@ -478,7 +482,7 @@ public abstract class AbstractFieldsArrayPopulation extends AbstractPopulation {
         return res;
     }
 
-    private static Object parsePrimitiveArray(String arrayStr, Class c) {
+    private static Object parsePrimitiveArray(String arrayStr, Class<?> c) {
         Object res = null;
 
         final java.util.regex.Pattern PRIMITIVE_ARRAY_PATTERN = java.util.regex.Pattern.compile("\\[.*?\\]");

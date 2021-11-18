@@ -36,7 +36,7 @@ public interface SimulationInterface {
         "PROP_POP_EXPORT_AT", "PROP_POP_IMPORT_PATH", 
         "PROP_INFECTION_INTRO", "PROP_POP_SELECT_CSV"
     };
-    public static final Class[] PROP_CLASS = {
+    public static final Class<?>[] PROP_CLASS = {
         String.class, Integer.class, Integer.class,
         Long.class, Integer.class, Integer.class,
         Integer.class,              

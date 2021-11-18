@@ -13,7 +13,11 @@ import util.PersonClassifier;
  */
 public abstract class AbstractPopulation implements java.io.Serializable {
 
-    private int globalTime = 0;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8962185006821536165L;
+	private int globalTime = 0;
     private AbstractInfection[] infList; // Infection to be modelled in this population
 
     public abstract boolean setParameter(String identifier, int id, Object value);

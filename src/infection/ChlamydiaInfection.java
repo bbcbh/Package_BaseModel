@@ -31,7 +31,11 @@ import random.RandomGenerator;
  */
 public class ChlamydiaInfection extends AbstractInfection implements TreatableInfectionInterface {
 
-    public static final int DEFAULT_CHLAM_INDEX = 1;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3192605672124834831L;
+	public static final int DEFAULT_CHLAM_INDEX = 1;
     public static final String[] CHLAM_STATUS = {"Exposed", "Asymptomatic", "Symptomatic", "Immune"};
 
     // Gamma dist, with mean, SD in days

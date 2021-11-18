@@ -13,6 +13,10 @@ import random.RandomGenerator;
 public abstract class AbstractAvailability implements Serializable {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6870376933739905780L;
+	/**
      * Random number generator
      */
     private RandomGenerator RNG;

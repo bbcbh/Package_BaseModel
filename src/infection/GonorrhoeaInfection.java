@@ -26,7 +26,11 @@ import random.RandomGenerator;
  */
 public class GonorrhoeaInfection extends infection.AbstractInfection implements infection.TreatableInfectionInterface{
 
-    public static final int DEFAULT_GONO_INDEX = 0;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -599768923332083307L;
+	public static final int DEFAULT_GONO_INDEX = 0;
     public static final String[] GONO_STATUS = {"Exposed", "Asymptomatic", "Symptomatic", "Immune"};
 
     // Gamma dist, with mean, SD in days

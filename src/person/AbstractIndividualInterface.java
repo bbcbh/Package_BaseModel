@@ -56,7 +56,7 @@ public interface AbstractIndividualInterface {
      */
     double getLastInfectedAtAge(int infectionIndex);
 
-    public Comparable getParameter(String id);
+    public Comparable<?> getParameter(String id);
 
     /**
      * Get the value of timeUntilNextStage at specified infection index.
@@ -98,7 +98,7 @@ public interface AbstractIndividualInterface {
      */
     void setLastActInfectious(int infectionIndex, boolean lastActInf);
 
-    public Comparable setParameter(String id, Comparable value);
+    public Comparable<?> setParameter(String id, Comparable<?> value);
 
     /**
      * Set the value of timeUntilNextStage at specified infection index. Should only be used at initialisation stage

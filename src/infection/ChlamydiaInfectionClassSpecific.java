@@ -12,7 +12,11 @@ import util.PersonClassifier;
  */
 public class ChlamydiaInfectionClassSpecific extends ChlamydiaInfection implements Serializable {
 
-    private final PersonClassifier personClassifier;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 521553562841059519L;
+	private final PersonClassifier personClassifier;
     private final AbstractRealDistribution[][] classSpecificDist; // classId, distIndex
     private final double[][][] classSpecificDistVar;
 

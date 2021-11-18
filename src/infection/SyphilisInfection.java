@@ -20,7 +20,12 @@ import random.RandomGenerator;
  */
 public class SyphilisInfection extends infection.AbstractInfection implements infection.TreatableInfectionInterface {
 
-    public static final String[] SYPHILIS_STATUS = {"Incubating",
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7410186998176484107L;
+
+	public static final String[] SYPHILIS_STATUS = {"Incubating",
         "Primary", "Secondary", "Early Latent", "Latent", "Tertiary",
         "Reission", "Recurrent", "Immunity"};
 
