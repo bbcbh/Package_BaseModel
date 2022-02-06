@@ -22,38 +22,6 @@ public class ContactMap extends SimpleGraph<Integer, Integer[]> {
 		this.id = id;
 	}
 
-	/*
-	public static void main(String[] arg) {
-		ContactMap test = new ContactMap(Integer[].class);
-		for (int i = 0; i < 100; i++) {
-			test.addVertex(i+1);
-		}
-
-		
-		test.addEdge(1, 2);
-		test.addEdge(2, 3);		
-		test.addEdge(3, 1);
-		test.addEdge(4, 5);
-		test.addEdge(6, 8);
-		test.addEdge(8, 9);
-		
-		
-		
-		for(int i = 0; i < 100; i++) {
-			int v1 = (int) (Math.random()*100+1); 
-			int v2 = (int) (Math.random()*100+1);
-			
-			if(v1 != v2 && !test.containsEdge(v1, v2)) {
-				test.addEdge(v1, v2);
-			}						
-		}
-		
-		Set<ContactMap> cluster = test.getContactCluster();
-		System.out.println("Number of clusters = " + cluster.size());
-		
-	}
-	*/
-
 	/**
 	 * 
 	 */
