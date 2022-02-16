@@ -10,8 +10,8 @@ public class ContactMap extends SimpleGraph<Integer, Integer[]> {
 	
 	int id = 0;
 
-	public ContactMap(Class<? extends Integer[]> edgeClass) {
-		super(edgeClass);
+	public ContactMap() {
+		super(Integer[].class);
 	}
 	
 	public int getId() {
@@ -70,7 +70,7 @@ public class ContactMap extends SimpleGraph<Integer, Integer[]> {
 				inSubMapNext++;
 
 				// New contactMap
-				ContactMap subMap = new ContactMap(Integer[].class);
+				ContactMap subMap = new ContactMap();
 				subMap.setId(newV);
 				res.add(subMap);
 				//System.out.println("Added subMap #" + subMap.getId());
