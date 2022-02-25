@@ -1,5 +1,10 @@
 package relationship;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +26,47 @@ public class ContactMap extends SimpleGraph<Integer, Integer[]> {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
+	public String toFullString() {
+		StringWriter wri = new StringWriter();
+		PrintWriter pWri = new PrintWriter(wri);
+		Set<Integer[]> edges = this.edgeSet();		
+		for(Integer[] e : edges) {
+			pWri.println(Arrays.toString(e));
+		}
+		pWri.close();
+		return wri.toString();			
+	}
+	
+	public static ContactMap ContactMapFromFullString(String str) throws IOException {		
+		ContactMap map = new ContactMap();
+		BufferedReader reader = new BufferedReader(new StringReader(str));
+		String line;
+		while((line = reader.readLine())!= null) {
+			String s = line.replaceAll("[]", "");
+			String[] ent = s.split(",");
+			Integer[] edge = new Integer[ent.length];
+			for(int i = 0; i < ent.length; i++) {
+				edge[i] = Integer.parseInt(ent[i]);
+			}
+			if(!map.containsVertex(edge[0])) {
+				map.addVertex(edge[0]);
+			}
+			if(!map.containsVertex(edge[1])) {
+				map.addVertex(edge[1]);
+			}			
+			map.addEdge(edge[0], edge[1], edge);						
+		}
+	
+		reader.close();
+		
+		return map;
+		
+		
+	}
+	
+	
 
 	/**
 	 * 
@@ -100,11 +146,11 @@ public class ContactMap extends SimpleGraph<Integer, Integer[]> {
 				subMap.addVertex(neighbour);
 			}
 			Integer[] subMapEdge;
-			if (newV < neighbour) {
-				subMapEdge = new Integer[] { newV, neighbour };
-			} else {
-				subMapEdge = new Integer[] { neighbour, newV };
-			}
+			subMapEdge = Arrays.copyOf(e, e.length);
+			
+			subMapEdge[0] = newV < neighbour?  newV: neighbour;
+			subMapEdge[1] = newV < neighbour?  neighbour : newV;
+			
 			if (!subMap.containsEdge(subMapEdge[0], subMapEdge[1])) {
 				subMap.addEdge(subMapEdge[0], subMapEdge[1], subMapEdge);
 				//System.out.println("Add "+ subMapEdge[0] + "," + subMapEdge[1] 
