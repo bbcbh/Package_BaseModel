@@ -32,8 +32,14 @@ public class ContactMap extends SimpleGraph<Integer, Integer[]> {
 		StringWriter wri = new StringWriter();
 		PrintWriter pWri = new PrintWriter(wri);
 		Set<Integer[]> edges = this.edgeSet();		
-		for(Integer[] e : edges) {
-			pWri.println(Arrays.toString(e));
+		for(Integer[] e : edges) {			
+			for(int i = 0; i < e.length; i++) {
+				if(i > 0) {
+					pWri.print(',');
+				}
+				pWri.print(e[i]);
+			}
+			pWri.println();			
 		}
 		pWri.close();
 		return wri.toString();			
@@ -43,9 +49,8 @@ public class ContactMap extends SimpleGraph<Integer, Integer[]> {
 		ContactMap map = new ContactMap();
 		BufferedReader reader = new BufferedReader(new StringReader(str));
 		String line;
-		while((line = reader.readLine())!= null) {
-			String s = line.replaceAll("[]", "");
-			String[] ent = s.split(",");
+		while((line = reader.readLine())!= null) {			
+			String[] ent = line.split(",");
 			Integer[] edge = new Integer[ent.length];
 			for(int i = 0; i < ent.length; i++) {
 				edge[i] = Integer.parseInt(ent[i]);
