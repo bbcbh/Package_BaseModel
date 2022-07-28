@@ -101,8 +101,13 @@ public class ArrayUtilsRandomGenerator {
      * @param range Higher interval offset, the element will be chosen will be from [low,low+range-1]
      * @param RNG Random number generator
      * @return An array of picked indices
+     * @deprecated use randomSelectIndex(int numToPick, int low, int range, RandomGenerator RNG) instead
      */
     public static <T> int[] randomSelectIndex(T[] ent, int numToPick, int low, int range, RandomGenerator RNG) {
+    	return randomSelectIndex(numToPick,  low,  range,  RNG);
+    }
+    	
+    public static int[] randomSelectIndex(int numToPick, int low, int range, RandomGenerator RNG) {
 
         int[] res = new int[numToPick];
         
