@@ -56,7 +56,7 @@ public class RelationshipMap extends SimpleGraph<Integer, SingleRelationship> {
      * Create a relationship map with no entry
      */
     public RelationshipMap() {
-        super(new RelationshipEdgeFactory());
+        super(SingleRelationship.class);
         for (int i = 0; i < personByGender.length; i++) {
             personByGender[i] = Collections.synchronizedSet(new HashSet<Integer>());
         }
