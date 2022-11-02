@@ -66,6 +66,8 @@ public class PropValUtils {
 
     public static Object propStrToObject(String ent, Class<?> cls) {
         Object res = null;
+        ent  = ent.replaceAll("\\s", "");
+        
         if (ent != null && !ent.isEmpty()) {
             if ("null".equalsIgnoreCase(ent)) {
                 res = null;
