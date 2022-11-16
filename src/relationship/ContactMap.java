@@ -13,17 +13,17 @@ import org.jgrapht.graph.SimpleGraph;
 
 public class ContactMap extends SimpleGraph<Integer, Integer[]> {
 
-	int id = 0;
+	long id = 0;
 
 	public ContactMap() {
 		super(Integer[].class);
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

@@ -14,18 +14,18 @@ public class TransmissionMap extends DirectedMultigraph<Integer, Integer[]> {
 
 	private static final long serialVersionUID = -1700110334758702189L;
 	
-	int id = 0;
+	long id = 0;
 	
 	public TransmissionMap() {
 		super(Integer[].class);
 		
 	}
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
