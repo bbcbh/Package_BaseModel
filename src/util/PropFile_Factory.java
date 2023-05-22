@@ -174,8 +174,8 @@ public class PropFile_Factory {
 											StringBuilder new_ent = new StringBuilder(orig_ent);
 											Matcher matcherEnt = replacePattern.matcher(orig_ent);
 											
-											if(matcherEnt.find()) {		
-												int f = matcherEnt.groupCount();
+											if(matcherEnt.find()) {	
+												
 												new_ent.replace(matcherEnt.start(1), matcherEnt.end(1), replaceText);
 											}
 											
