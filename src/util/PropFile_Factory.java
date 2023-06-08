@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -55,6 +58,7 @@ public class PropFile_Factory {
 	private static final String NODE_REPLACE_ENT = "replace_entry";
 	private static final String ATTR_GEN_DIR_GRP_NUM = "grp_num";
 	private static final String NODE_REPLACE_PATTERN = "replace_pattern";
+	private static final String NODE_COPY_EXTRA_FILES = "copy_extra_files";
 
 	public static void main(String[] arg) throws FileNotFoundException, IOException, ParserConfigurationException,
 			SAXException, TransformerException {
@@ -99,7 +103,8 @@ public class PropFile_Factory {
 					HashMap<Integer, String> dir_replacement_text = new HashMap<Integer, String>();
 					HashMap<String, String> entry_replacement_text = new HashMap<String, String>();
 					HashMap<String, String> entry_replacement_pattern = new HashMap<String, String>();
-
+					boolean copyExtra = false;					
+					
 					for (int sId = 0; sId < node_set.getLength(); sId++) {
 						if (node_set.item(sId) instanceof Element) {
 							Element child = (Element) node_set.item(sId);
@@ -117,6 +122,9 @@ public class PropFile_Factory {
 							if (child.getNodeName().equals(NODE_REPLACE_PATTERN)) {
 								String key = child.getAttribute("key");
 								entry_replacement_pattern.put(key, child.getTextContent());
+							}
+							if(child.getNodeName().equals(NODE_COPY_EXTRA_FILES)) {
+								copyExtra = true;
 							}
 						}
 
@@ -199,10 +207,40 @@ public class PropFile_Factory {
 							// Store as new .prop file
 							PropValUtils.replacePropEntryByDOM(xml_src, new File(newDir, PROP_FILE_NAME),
 									replaceElement.toArray(new Element[replaceElement.size()]), null);
+							
+														
+							// Check if copy extra
+							if(copyExtra) {
+								File[] template_dir_extra = template_dir.listFiles(new FileFilter() {									
+									@Override
+									public boolean accept(File pathname) {										
+										return !pathname.getName().equals(PROP_FILE_NAME);
+									}
+								});
+								
+								for(File extra : template_dir_extra) {
+									File target = new File(newDir, extra.getName());
+									Files.copy(extra.toPath(), target.toPath(), 
+											StandardCopyOption.REPLACE_EXISTING);
+								}
+								
+							}
+							
+							
+							
 
 						}
 
 					}
+					
+					
+					
+					
+					
+					
+					
+					
+					
 
 				}
 
