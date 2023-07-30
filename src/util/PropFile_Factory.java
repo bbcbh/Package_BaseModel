@@ -100,6 +100,7 @@ public class PropFile_Factory {
 			if (modFile.isFile()) {
 				Document xml_mod_src = PropValUtils.parseXMLFile(modFile);
 				NodeList nList_replacement_set = xml_mod_src.getElementsByTagName(NODE_REPLACEMENT_SET);
+				Element replacement_comment = (Element) xml_mod_src.getElementsByTagName("comment").item(0);
 
 				for (int rId = 0; rId < nList_replacement_set.getLength(); rId++) {
 					Element elem_set = (Element) nList_replacement_set.item(rId);
@@ -261,7 +262,7 @@ public class PropFile_Factory {
 
 								// Store as new .prop file
 								PropValUtils.replacePropEntryByDOM(xml_src, new File(newDir, PROP_FILE_NAME),
-										replaceElement.toArray(new Element[replaceElement.size()]), null);
+										replaceElement.toArray(new Element[replaceElement.size()]), replacement_comment);
 
 								// Check if copy extra
 								if (copyExtra) {
