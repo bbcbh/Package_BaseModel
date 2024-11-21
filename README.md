@@ -7,6 +7,7 @@ One example is the AbstractIndividualInterface. As a Java interface, it cannot b
 For instance, nearly all IBM implementations use the getId() function from this interface to retrieve a unique identifier for an individual. A typical individual might be defined as follows:
 ```
 class MyPerson implements AbstractIndividualInterface {
+
     // Fields and other class-specific attributes
 
     @Override
